@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" th:href="@{/css/styles.css}"/>
+	<title>Welcome</title>
+	<meta charset="utf-8"/>
+</head>
+
+<body>
+	<div class="centre-screen">
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>County</th>
+			</tr>
+			<tr th:each = "county: ${counties}" th:object = "${county}">
+				<td th:text="*{countyId}">ID</td>
+				<td th:text="*{countyName}">County</td>
+				<td></td>
+			</tr>
+		</table>
+		<br>
+		<table class="push">
+			<tr>
+				<th>ID</th>
+				<th>County</th>
+			</tr>
+			<!-- Iteration count enumerates the list -->
+			<tr th:each = "county, iterationCount: ${counties}" th:class="${iterationCount.odd}? 'odd'" th:object = "${county}">
+				<td th:text="*{countyId}">ID</td>
+				<td th:text="*{countyName}">County</td>
+				<td></td>
+			</tr>
+		</table>
+		<br>
+		<table class="push">
+			<tr>
+				<th>ID</th>
+				<th>County</th>
+			</tr>
+			<!-- Anchor tag brings you to towns in county page -->
+			<tr th:each = "county, iterationCount: ${counties}" th:class="${iterationCount.odd}? 'odd'" th:object = "${county}">
+				<td th:text="${county.countyId}"></td>
+				<td><a th:text="${county.countyName}" th:href="'/townsincounty/' + *{countyId}">County Name</a></td>
+			</tr>
+		</table>
+	<div>
+</body>
+</html>
+

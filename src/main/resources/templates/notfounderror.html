@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" th:href="@{/css/styles.css}"/>
+	<title>Welcome</title>
+	<meta charset="utf-8"/>
+</head>
+
+<body>
+	<div class="centre-screen">
+		<h1>Error</h1>
+		<h2 th:if="${countyId}">The county with id <span th:text="${countyId}"></span> does not exist.</h2>
+		<h2 th:if="${townId}">The town with id <span th:text="${townId}"></span> does not exist.</h2>
+	<div>
+</body>
+</html>
+

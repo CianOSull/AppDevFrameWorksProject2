@@ -1,0 +1,18 @@
+<div th:fragment="heading">
+  <h1 th:text="#{heading.welcome}"></h1>
+  <nav>
+   <a th:text = "#{fragments.home}" th:href="@{/}">Home</a>
+   <a th:text = "#{fragments.counties}" th:href="@{counties}">Counties</a>  
+   <a th:href="@{/newcounty}" th:text="#{fragments.newcounty}">New county</a>
+   <a th:href="@{/newtown}" th:text="#{fragments.newtown}">New county</a>
+  </nav>
+</div>
+
+<div th:fragment="languages">
+  <footer th:with="currentUrl=(${@thymeleafBeans.removeLangFromUrl()})">
+   <a th:href="@{${currentUrl}(lang=ie)}">English</a>
+   <a th:href="@{${currentUrl}(lang=fr)}">French</i></a>
+   <br>
+   <span>&copy; Cian O'Sullivan</span> 
+ </footer>
+</div>

@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" th:href="@{/css/styles.css}"/>
+	<title>Welcome</title>
+	<meta charset="utf-8"/>
+</head>
+
+<body>
+	<div class="centre-screen">
+		<h1>
+			Towns in <span th:text="${county.countyName}">WHERE</span>
+		</h1>
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Town</th>
+				<th>County</th>
+			</tr>
+			<tr  th:object = "${town}">
+				<td th:text="*{townId}">ID</td>
+				<td th:text="*{townName}">TOWN</td>
+				<td th:text="*{townCounty:countyName}">COUNTY_NAME</td>`
+			</tr>
+		</table>
+	<div>
+</body>
+</html>
+

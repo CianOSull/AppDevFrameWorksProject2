@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" th:href="@{/css/styles.css}"/>
+	<title>Welcome</title>
+	<meta charset="utf-8"/>
+</head>
+
+<body>
+	
+	<!--
+	<main>
+		<header>
+			<h1 th:text="#{heading.welcome}"></h1>
+		</header>
+	
+		<h1>
+			<span th:text="#{index.welcome}"> <span th:text="${name}">DEFAULT TEXT</span>
+		</h1>
+		
+		<footer>
+			<div th:with="currentUrl=(${@thymeleafBeans.removeLangFromUrl()})">
+			   <a th:href="@{${currentUrl}(lang=ie)}">Ireland</a>
+			   <a th:href="@{${currentUrl}(lang=fr)}">French</a>
+			</div>
+		</footer>
+	</main>
+	-->
+	
+  <header th:insert="fragments :: heading"></header>
+  
+  <main>
+    <h1 th:text="#{index.welcome}">DEFAULT TEXT</h1>
+  </main>
+  
+  <footer th:insert="fragments :: languages"></footer>
+	
+</body>
+</html>
+

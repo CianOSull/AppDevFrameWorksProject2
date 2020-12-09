@@ -1,0 +1,25 @@
+*{
+	font-family: Arial;
+	color: navy;
+}
+
+.centre-screen {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	min-height: 100vh;
+}
+
+tr td a{
+	color: #8000ff;
+	text-direction:none;
+}
+
+.odd {
+	background-color: #bfeeff;
+}
+
+.push {
+}

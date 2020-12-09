@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" th:href="@{/css/styles.css}"/>
+	<title>Welcome</title>
+	<meta charset="utf-8"/>
+</head>
+
+<body>
+	<div class="centre-screen">
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>County</th>
+			</tr>
+			<tr th:object = "${county}">
+				<td th:text="*{countyId}">ID</td>
+				<td th:text="*{countyName}">County</td>
+			</tr>
+		</table>
+	<div>
+</body>
+</html>
+
