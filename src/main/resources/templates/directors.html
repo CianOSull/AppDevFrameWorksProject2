@@ -7,6 +7,9 @@
 </head>
 
 <body>
+	
+	<header th:insert="fragments :: heading"></header>
+	
 	<div class="centre-screen">
 		<table>
 			<tr>
@@ -41,10 +44,12 @@
 			<!-- Anchor tag brings you to towns in director page -->
 			<tr th:each = "director, iterationCount: ${directors}" th:class="${iterationCount.odd}? 'odd'" th:object = "${director}">
 				<td th:text="${director.directorId}"></td>
-				<td><a th:text="${director.directorName}" th:href="'/townsindirector/' + *{directorId}">Director Name</a></td>
+				<td><a th:text="${director.directorName}" th:href="'/filmsbydirector/' + *{directorId}">Director Name</a></td>
 			</tr>
 		</table>
 	<div>
+	
+	<footer th:insert="fragments :: languages"></footer>
 </body>
 </html>
 

@@ -12,13 +12,13 @@ import org.springframework.data.repository.query.Param;
 import ie.cian.entities.Director;
 
 public interface DirectorDao extends JpaRepository<Director, Integer>{
-	Director findDirectorBySurname(String countyName);
+	Director findDirectorBySurname(String surname);
 	// This one does the same as above, just a different way
-	Director findBySurname(String countyName);
-	Director findByDirectorId(int countyId);			
-	int findDirectorIdBySurname(String countyName);
-	boolean existsBySurname(String countyName);
-	boolean existsByDirectorId(int countyId);
+	Director findBySurname(String surname);
+	Director findByDirectorId(int directorId);			
+	int findDirectorIdBySurname(String surname);
+	boolean existsBySurname(String surname);
+	boolean existsByDirectorId(int directorId);
 	
 	List<Director> findAllByOrderBySurnameAsc();
 	List<Director> findAllByOrderBySurnameDesc();

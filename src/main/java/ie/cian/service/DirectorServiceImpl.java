@@ -51,7 +51,7 @@ public class DirectorServiceImpl implements DirectorService {
 	
 	@Override
 	public List<Director> getAllDirectors() {
-		return directorDao.findAll();
+		return directorDao.findAllByOrderBySurnameAsc();
 	}
 
 	@Override
