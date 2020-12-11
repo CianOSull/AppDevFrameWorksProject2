@@ -12,28 +12,28 @@
   <main>
     <div class = "centre-screen">
 		<!-- Big thing here is that the method it will use to send a message-box
-			 is post, in NewCountyForm class it has a postmapping for post messages.
+			 is post, in NewDirectorForm class it has a postmapping for post messages.
 			 This is why we have action here that it will use the /newcoutny mapping
 			 in the class so it uses the right class.
 			 The object part is also binding the class to this form
 		-->
-		<form method="post" th:action="@{/newcounty}" th:object="${newCountyForm"}>
+		<form method="post" th:action="@{/newdirector}" th:object="${newDirectorForm"}>
 			<!-- Remember that th:text is for changing language -->
-			<label for="countyName" th:text="#{newcounty.countyName}"></label>
+			<label for="directorName" th:text="#{newdirector.directorName}"></label>
 			<!-- This bit here is saying that:
 				 This is a field, of the parent object newCoutnyForm which is above
-				 It is refering to the newCountyName varaible in the class.
+				 It is refering to the newDirectorName varaible in the class.
 				 Whatever the user types will bound to that variable
 			-->
-			<input type="text" th:field="*{newCountyName"}/>
-			<!-- this th if only works if duplicateCountyName variable exists -->
-			<div th:if="${duplicateCountyName}" class="error">
-				<span th:text="${duplicateCountyName}"></span> <span th:text="#{newcounty.alreadyexists}"></span>
+			<input type="text" th:field="*{newDirectorName"}/>
+			<!-- this th if only works if duplicateDirectorName variable exists -->
+			<div th:if="${duplicateDirectorName}" class="error">
+				<span th:text="${duplicateDirectorName}"></span> <span th:text="#{newdirector.alreadyexists}"></span>
 			</div>
 			
 			<!-- This is for if an error appears in this particular field, it is for when you enter in no characters in this case -->
 			<!-- By the way you would need one of these for each variable you have and also it passes all errors associated with the variable -->
-			<div th:if="${#fields hasErrors('newCountyName')}" class="error" th:error="*{newCountyName}"></div>
+			<div th:if="${#fields hasErrors('newDirectorName')}" class="error" th:error="*{newDirectorName}"></div>
 			
 			<br><input type="submit" th:value="#{submit}"/>
 		</form>

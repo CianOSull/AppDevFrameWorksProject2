@@ -9,18 +9,18 @@
 <body>
 	<div class="centre-screen">
 		<h1>
-			Towns in <span th:text="${county.countyName}">WHERE</span>
+			Films By <span th:text="${director.directorName}">WHERE</span>
 		</h1>
 		<table>
 			<tr>
 				<th>ID</th>
-				<th>Town</th>
-				<th>County</th>
+				<th>Film</th>
+				<th>Director</th>
 			</tr>
-			<tr  th:object = "${town}">
-				<td th:text="*{townId}">ID</td>
-				<td th:text="*{townName}">TOWN</td>
-				<td th:text="*{townCounty:countyName}">COUNTY_NAME</td>`
+			<tr  th:object = "${film}">
+				<td th:text="*{filmId}">ID</td>
+				<td th:text="*{filmName}">FILM</td>
+				<td th:text="*{filmDirector:directorName}">DIRECTOR_NAME</td>`
 			</tr>
 		</table>
 	<div>

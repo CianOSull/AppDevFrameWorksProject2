@@ -9,16 +9,16 @@
 <body>
 	<div class="centre-screen">
 		<h1>
-			Towns in <span th:text="${county.countyName}">WHERE</span>
+			Films by <span th:text="${director.directorName}">WHERE</span>
 		</h1>
 		<table>
 			<tr>
 				<th>ID</th>
-				<th>County</th>
+				<th>Director</th>
 			</tr>
-			<tr th:each = "town, iterationCount : ${county.countyTowns}" th:class="{iterationCount.odd}? 'odd'" th:object = "${county}">
-				<td th:text="*{townId}">ID</td>
-				<td th:text="*{townName}">TOWN</td>
+			<tr th:each = "film, iterationCount : ${director.directorFilms}" th:class="{iterationCount.odd}? 'odd'" th:object = "${director}">
+				<td th:text="*{filmId}">ID</td>
+				<td th:text="*{filmName}">FILM</td>
 				<td></td>
 			</tr>
 		</table>
