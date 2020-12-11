@@ -18,7 +18,7 @@
 			</tr>
 			<tr th:each = "director: ${directors}" th:object = "${director}">
 				<td th:text="*{directorId}">ID</td>
-				<td th:text="*{directorName}">Director</td>
+				<td th:text="*{directorFullName}">Director</td>
 				<td></td>
 			</tr>
 		</table>
@@ -31,7 +31,7 @@
 			<!-- Iteration count enumerates the list -->
 			<tr th:each = "director, iterationCount: ${directors}" th:class="${iterationCount.odd}? 'odd'" th:object = "${director}">
 				<td th:text="*{directorId}">ID</td>
-				<td th:text="*{directorName}">Director</td>
+				<td th:text="*{directorFullName}">Director</td>
 				<td></td>
 			</tr>
 		</table>
@@ -44,7 +44,7 @@
 			<!-- Anchor tag brings you to towns in director page -->
 			<tr th:each = "director, iterationCount: ${directors}" th:class="${iterationCount.odd}? 'odd'" th:object = "${director}">
 				<td th:text="${director.directorId}"></td>
-				<td><a th:text="${director.directorName}" th:href="'/filmsbydirector/' + *{directorId}">Director Name</a></td>
+				<td><a th:text="${director.directorFullName}" th:href="'/filmsbydirector/' + *{directorId}">Director Name</a></td>
 			</tr>
 		</table>
 	<div>

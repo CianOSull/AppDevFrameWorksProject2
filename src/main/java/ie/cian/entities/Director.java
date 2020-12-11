@@ -33,11 +33,9 @@ public class Director {
 	@Column(nullable = false, unique = true)
 	private String surname;
 	
-	/*
-	 * For some reason directorName is needed, don't know why but program doesn't work without it
-	 */
+	// This is just for displaying
 	@Column(nullable = false, unique = true)
-	private String directorName;
+	private String directorFullName;
 	
 	@OneToMany(mappedBy = "filmDirector", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<Film> directorFilms = new ArrayList<>();
@@ -45,6 +43,6 @@ public class Director {
 	public Director(String fn, String sm) {
 		this.firstname = fn;
 		this.surname = sm;
-		this.directorName = fn + " " + sm;
+		this.directorFullName = fn + " " + sm;
 	}
 }
