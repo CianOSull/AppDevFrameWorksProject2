@@ -9,92 +9,92 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import ie.cian.entities.County;
-import ie.cian.entities.Town;
-import ie.cian.service.CountyService;
-import ie.cian.service.TownService;
+import ie.cian.entities.Director;
+import ie.cian.entities.Film;
+import ie.cian.service.DirectorService;
+import ie.cian.service.FilmService;
 
 @Controller
 public class QueryController {
 	@Autowired
-	CountyService countyService;
+	DirectorService directorService;
 	
 	@Autowired
-	TownService townService;
+	FilmService filmService;
 	
-	// This is so that you can pass in a countyId and get that
-	// counties info
-	@GetMapping("county/{countyId}")
-	public String getCountyByCountyId(@PathVariable("countyId") int countyId, Model model)
+	// This is so that you can pass in a directorId and get that
+	// directors info
+	@GetMapping("director/{directorId}")
+	public String getDirectorByDirectorId(@PathVariable("directorId") int directorId, Model model)
 	{
-		County county = countyService.findCounty(countyId);
-		if(county == null) {
-			model.addAttribute("countyId", countyId);
+		Director director = directorService.findDirector(directorId);
+		if(director == null) {
+			model.addAttribute("directorId", directorId);
 			return "notfounderror";
 		}
-		model.addAttribute("county", county);
-		return "county";
+		model.addAttribute("director", director);
+		return "director";
 	}
 	
-	@GetMapping("/counties")
-	public String showCounties(Model model)
+	@GetMapping("/directors")
+	public String showDirectors(Model model)
 	{
-		List<County> counties = countyService.getAllCounties();
-		model.addAttribute("counties", counties);
-		return "counties";
+		List<Director> directors = directorService.getAllDirectors();
+		model.addAttribute("directors", directors);
+		return "directors";
 	}
 	
-	@GetMapping("townsincounty/{countyId}")
-	public String showTownsInCounty(@PathVariable(name="countyId") int countyId, Model model)
+	@GetMapping("filmsindirector/{directorId}")
+	public String showFilmsInDirector(@PathVariable(name="directorId") int directorId, Model model)
 	{
-		County county = countyService.getCountyAndTownsByCountyId(countyId);
+		Director director = directorService.getDirectorAndFilmsByDirectorId(directorId);
 		
-		if(county == null) {
-			model.addAttribute("countyId", countyId);
+		if(director == null) {
+			model.addAttribute("directorId", directorId);
 			return "notfounderror";
 		}
-		model.addAttribute("county", county);
-		return "townsincounty";
+		model.addAttribute("director", director);
+		return "filmsindirector";
 	}
 	
-	@GetMapping("/town")
-	public String showTownById(@PathVariable(name="townid", required = true) int townId, Model model)
+	@GetMapping("/film")
+	public String showFilmById(@PathVariable(name="filmid", required = true) int filmId, Model model)
 	{
-		Town town = townService.findTownByTownId(townId);
-		if(town == null) {
-			model.addAttribute("countyId", townId);
+		Film film = filmService.findFilmByFilmId(filmId);
+		if(film == null) {
+			model.addAttribute("directorId", filmId);
 			return "notfounderror";
 		}
-		model.addAttribute("town", town);
-		return "town";
+		model.addAttribute("film", film);
+		return "film";
 	}
 	
 	// This is a delete request and is the main way deletions are done.
 	// It takes a path.
-	@DeleteMapping("/county/{countyId}")
-	public String deleteMappingCounty(@PathVariable(name="countyId") int countyId, Model model)
+	@DeleteMapping("/director/{directorId}")
+	public String deleteMappingDirector(@PathVariable(name="directorId") int directorId, Model model)
 	{
-		if (countyService.deleteCounty(countyId)) {
+		if (directorService.deleteDirector(directorId)) {
 			// Returning redirect is like a refresh,
-			// so here it sends you back to counties
-			// if a county is deleted.
-			return "redirect:/counties";
+			// so here it sends you back to directors
+			// if a director is deleted.
+			return "redirect:/directors";
 		}
-		model.addAttribute("countyId", countyId);
+		model.addAttribute("directorId", directorId);
 		return "notfounderror";
 	}
 	
 	// This is not hte usual way for deleting and is jsut for demonstraiton
-	@GetMapping("/county/delete/{countyId}")
-	public String deleteCounty(@PathVariable(name="countyId") int countyId, Model model) 
+	@GetMapping("/director/delete/{directorId}")
+	public String deleteDirector(@PathVariable(name="directorId") int directorId, Model model) 
 	{
-		if (countyService.deleteCounty(countyId)) {
+		if (directorService.deleteDirector(directorId)) {
 			// Returning redirect is like a refresh,
-			// so here it sends you back to counties
-			// if a county is deleted.
-			return "redirect:/counties";
+			// so here it sends you back to directors
+			// if a director is deleted.
+			return "redirect:/directors";
 		}
-		model.addAttribute("countyId", countyId);
+		model.addAttribute("directorId", directorId);
 		return "notfounderror";
 	}
 	

@@ -20,15 +20,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "county")
-public class County {
+@Table(name = "director")
+public class Director {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int countyId;
+	private int directorId;
 	
 	@Column(nullable = false, unique = true  )
-	private String countyName;
+	private String firstname;
+	
+	@Column(nullable = false, unique = true)
+	private String surname;
 	
 	// One County has many towns
 	// When fetching a County from a query, do not fetch the list of towns. 
@@ -40,10 +43,11 @@ public class County {
 	// time. It will rely on you getting the town information.
 	// Saves on resources if you dont need all of the town 
 	// Cascade means if a county is deleted to remove all towns in that county
-	@OneToMany(mappedBy = "townCounty", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-	private List<Town> countyTowns = new ArrayList<>();
+	@OneToMany(mappedBy = "filmDirector", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	private List<Film> directorFilms = new ArrayList<>();
 
-	public County(String countyName) {
-		this.countyName = countyName;
+	public Director(String fn, String sm) {
+		this.firstname = fn;
+		this.surname = sm;
 	}
 }

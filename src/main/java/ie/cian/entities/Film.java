@@ -1,6 +1,5 @@
 package ie.cian.entities;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,15 +18,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 //Better to set table name like this rather than in entity
-@Table(name = "town")
-public class Town {
+@Table(name = "film")
+public class Film {
 	@Id
 	// This defines the primary key generation, common is identity
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int townId;
+	private int filmId;
 	
 	@Column(nullable = false )
-	private String townName;
+	private String filmName;
 	
 	/* IMPORTANT NOTE
 	 * This is saying that a town has a county.
@@ -43,14 +42,14 @@ public class Town {
 	// Name this joining column "column_id"
 	// This is the same as the column annotaiton but for a join
 	// relationship
-	@JoinColumn(name = "county_id", nullable = false)
-	private County townCounty;
+	@JoinColumn(name = "director_id", nullable = false)
+	private Director filmDirector;
 	
 	// This method is needed because when committing to the database, 
 	// a Town object is first created but it does not have the townId field. 
 	// Hence we need this constructor.
-	public Town(String townName, County townCounty) {
-		this.townName = townName;
-		this.townCounty = townCounty;
+	public Film(String fn, Director fd) {
+		this.filmName = fn;
+		this.filmDirector = fd;
 	}
 }
