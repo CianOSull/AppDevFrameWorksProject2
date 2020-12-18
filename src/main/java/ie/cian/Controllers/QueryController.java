@@ -30,6 +30,16 @@ public class QueryController {
 		return "directors";
 	}
 	
+	@GetMapping("/films")
+	public String showFilms(Model model)
+	{
+		List<Film> films = filmService.getAllFilms();
+		model.addAttribute("films", films);
+		List<Director> directors = directorService.getAllDirectors();
+		model.addAttribute("directors", directors);
+		return "films";
+	}
+	
 	// This should show information on a film with id
 	@GetMapping("film/{filmId}")
 	public String getFilmByfilmId(@PathVariable("filmId") int filmId, Model model)

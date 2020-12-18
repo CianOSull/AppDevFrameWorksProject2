@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" th:href="@{/css/styles.css}"/>
+	<title>Welcome</title>
+	<meta charset="utf-8"/>
+</head>
+
+<body>
+	
+	<header th:insert="fragments :: heading"></header>
+	
+	<div class="centre-screen">
+		<!-- <table class="push"> -->
+		<table class="push">
+			<tr>
+				<th>ID</th>
+				<th>Film</th>
+			</tr>
+			<tr th:each = "film, iterationCount: ${films}" th:class="${iterationCount.odd}? 'odd'" th:object = "${film}">
+				<td th:text="*{filmId}">ID</td>
+				<td th:text="*{filmName}">Film</td>
+				<td></td>
+			</tr>
+	<div>
+	
+	<footer th:insert="fragments :: languages"></footer>
+</body>
+</html>
+
