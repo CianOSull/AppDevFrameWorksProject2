@@ -4,7 +4,7 @@ import lombok.Data;
 //import javax.validation.constraints.Size;
 
 @Data
-public class NewCountyForm {
+public class NewDirectorForm {
 	
 	// This class only consists of this field
 	/*
@@ -16,5 +16,6 @@ public class NewCountyForm {
 	// This specifies that this string must be min 4 and max 30
 	// Doesn't work though because the improt above doesn't work
 	// @Size(min = 4, max = 30)
-	private String newCountyName;
+	private String newFirstname;
+	private String newSurname;
 }

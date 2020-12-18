@@ -21,6 +21,38 @@ public class QueryController {
 	
 	@Autowired
 	FilmService filmService;
+		
+	@GetMapping("/directors")
+	public String showDirectors(Model model)
+	{
+		List<Director> directors = directorService.getAllDirectors();
+		model.addAttribute("directors", directors);
+		return "directors";
+	}
+	
+	@GetMapping("/films")
+	public String showFilms(Model model)
+	{
+		List<Film> films = filmService.getAllFilms();
+		model.addAttribute("films", films);
+		List<Director> directors = directorService.getAllDirectors();
+		model.addAttribute("directors", directors);
+		return "films";
+	}
+	
+	// This should show information on a film with id
+	@GetMapping("film/{filmId}")
+	public String getFilmByfilmId(@PathVariable("filmId") int filmId, Model model)
+	{
+		Film film = filmService.findFilm(filmId);
+		if(film == null) {
+			model.addAttribute("filmId", filmId);
+			return "notfounderror";
+		}
+		model.addAttribute("film", film);
+		return "film";
+	}
+	
 	
 	// This is so that you can pass in a directorId and get that
 	// directors info
@@ -36,16 +68,8 @@ public class QueryController {
 		return "director";
 	}
 	
-	@GetMapping("/directors")
-	public String showDirectors(Model model)
-	{
-		List<Director> directors = directorService.getAllDirectors();
-		model.addAttribute("directors", directors);
-		return "directors";
-	}
-	
-	@GetMapping("filmsindirector/{directorId}")
-	public String showFilmsInDirector(@PathVariable(name="directorId") int directorId, Model model)
+	@GetMapping("filmsbydirector/{directorId}")
+	public String showFilmsByDirector(@PathVariable(name="directorId") int directorId, Model model)
 	{
 		Director director = directorService.getDirectorAndFilmsByDirectorId(directorId);
 		
@@ -54,7 +78,7 @@ public class QueryController {
 			return "notfounderror";
 		}
 		model.addAttribute("director", director);
-		return "filmsindirector";
+		return "filmsbydirector";
 	}
 	
 	@GetMapping("/film")

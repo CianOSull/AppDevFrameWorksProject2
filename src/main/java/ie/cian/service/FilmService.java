@@ -6,6 +6,7 @@ import ie.cian.entities.Director;
 import ie.cian.entities.Film;
 
 public interface FilmService {
+	Film findFilm(int filmId);
 	List<Film> getAllFilms();
 	List<Film> getAllFilmsByADirector(int directorId);
 	Film save(String filmName, Director filmDirector);

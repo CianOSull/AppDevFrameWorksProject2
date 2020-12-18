@@ -17,6 +17,16 @@ public class FilmServiceImplementation implements FilmService{
 	FilmDao filmDao;
 	
 	@Override
+    public Film findFilm(int filmId) {
+		Optional<Film> optional = filmDao.findById(filmId);
+			
+		if (optional.isPresent())
+			return optional.get(); // note the use of .get()
+		// If nothing then just return null
+		return null;
+	}
+	
+	@Override
 	public Film save(String filmName, Director filmDirector) {
 		if (filmDao.existsByFilmNameAndFilmDirector(filmName, filmDirector))
 		{

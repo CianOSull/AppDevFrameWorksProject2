@@ -9,14 +9,19 @@
 <body>
 	<header th:insert="fragments :: heading"></header>
 	<div class="centre-screen">
+		<h1>
+			Films By <span th:text="${director.directorFullName}">WHERE</span>
+		</h1>
 		<table>
 			<tr>
 				<th>ID</th>
+				<th>Film</th>
 				<th>Director</th>
 			</tr>
-			<tr th:object = "${director}">
-				<td th:text="*{directorId}">ID</td>
-				<td th:text="*{directorFullName}">Director</td>
+			<tr  th:object = "${film}">
+				<td th:text="*{filmId}">ID</td>
+				<td th:text="*{filmName}">FILM</td>
+				<td th:text="*{filmDirector:directorFullName}">DIRECTOR_NAME</td>`
 			</tr>
 		</table>
 	<div>

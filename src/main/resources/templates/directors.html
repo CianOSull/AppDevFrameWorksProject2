@@ -11,6 +11,20 @@
 	<header th:insert="fragments :: heading"></header>
 	
 	<div class="centre-screen">
+		<!-- <table class="push"> -->
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Director</th>
+			</tr>
+			<!-- Anchor tag brings you to towns in director page -->
+			<tr th:each = "director, iterationCount: ${directors}" th:class="${iterationCount.odd}? 'odd'" th:object = "${director}">
+				<td th:text="${director.directorId}"></td>
+				<td><a th:text="${director.directorFullName}" th:href="'/filmsbydirector/' + *{directorId}">Director Name</a></td>
+				<td></td>
+			</tr>
+		</table>
+		<!--
 		<table>
 			<tr>
 				<th>ID</th>
@@ -28,7 +42,6 @@
 				<th>ID</th>
 				<th>Director</th>
 			</tr>
-			<!-- Iteration count enumerates the list -->
 			<tr th:each = "director, iterationCount: ${directors}" th:class="${iterationCount.odd}? 'odd'" th:object = "${director}">
 				<td th:text="*{directorId}">ID</td>
 				<td th:text="*{directorFullName}">Director</td>
@@ -36,17 +49,7 @@
 			</tr>
 		</table>
 		<br>
-		<table class="push">
-			<tr>
-				<th>ID</th>
-				<th>Director</th>
-			</tr>
-			<!-- Anchor tag brings you to towns in director page -->
-			<tr th:each = "director, iterationCount: ${directors}" th:class="${iterationCount.odd}? 'odd'" th:object = "${director}">
-				<td th:text="${director.directorId}"></td>
-				<td><a th:text="${director.directorFullName}" th:href="'/filmsbydirector/' + *{directorId}">Director Name</a></td>
-			</tr>
-		</table>
+		-->
 	<div>
 	
 	<footer th:insert="fragments :: languages"></footer>

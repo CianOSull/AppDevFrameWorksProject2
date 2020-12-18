@@ -7,23 +7,24 @@
 </head>
 
 <body>
+	
+	<header th:insert="fragments :: heading"></header>
+	
 	<div class="centre-screen">
-		<h1>
-			Films By <span th:text="${director.directorName}">WHERE</span>
-		</h1>
-		<table>
+		<!-- <table class="push"> -->
+		<table class="push">
 			<tr>
 				<th>ID</th>
 				<th>Film</th>
-				<th>Director</th>
 			</tr>
-			<tr  th:object = "${film}">
+			<tr th:each = "film, iterationCount: ${films}" th:class="${iterationCount.odd}? 'odd'" th:object = "${film}">
 				<td th:text="*{filmId}">ID</td>
-				<td th:text="*{filmName}">FILM</td>
-				<td th:text="*{filmDirector:directorName}">DIRECTOR_NAME</td>`
+				<td th:text="*{filmName}">Film</td>
+				<td></td>
 			</tr>
-		</table>
 	<div>
+	
+	<footer th:insert="fragments :: languages"></footer>
 </body>
 </html>
 

@@ -5,9 +5,9 @@ import com.sun.istack.NotNull;
 import lombok.Data;
 
 @Data
-public class NewTownForm {
-	private String newTownName;
+public class NewFilmForm {
+	private String newFilmName;
 	
 	@NotNull
-	private int countyId;
+	private int directorId;
 }
