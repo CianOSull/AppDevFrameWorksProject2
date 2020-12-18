@@ -7,6 +7,7 @@
 </head>
 
 <body>
+	<header th:insert="fragments :: heading"></header>
 	<div class="centre-screen">
 		<table>
 			<tr>
@@ -15,10 +16,11 @@
 			</tr>
 			<tr th:object = "${director}">
 				<td th:text="*{directorId}">ID</td>
-				<td th:text="*{directorName}">Director</td>
+				<td th:text="*{directorFullName}">Director</td>
 			</tr>
 		</table>
 	<div>
+	<footer th:insert="fragments :: languages"></footer>
 </body>
 </html>
 

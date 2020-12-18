@@ -7,6 +7,7 @@
 </head>
 
 <body>
+	<header th:insert="fragments :: heading"></header>
 	<div class="centre-screen">
 		<h1>
 			Films By <span th:text="${director.directorFullName}">WHERE</span>
@@ -24,6 +25,7 @@
 			</tr>
 		</table>
 	<div>
+	<footer th:insert="fragments :: languages"></footer>
 </body>
 </html>
 
