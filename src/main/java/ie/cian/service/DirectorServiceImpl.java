@@ -18,6 +18,11 @@ public class DirectorServiceImpl implements DirectorService {
 	DirectorDao directorDao;
 	
 	@Override
+	public List<Director> getAllDirectors() {
+		return directorDao.findAllByOrderBySurnameAsc();
+	}
+	
+	@Override
 	public Director save(String firstname, String surname) {
 		if (directorDao.existsBySurname(surname))
 		{
@@ -49,16 +54,11 @@ public class DirectorServiceImpl implements DirectorService {
 	}
 
 	
-	@Override
-	public List<Director> getAllDirectors() {
-		return directorDao.findAllByOrderBySurnameAsc();
-	}
 
 	@Override
 	public long numberOfDirectors() {
 		return directorDao.count();
 	}
-
 	
 
 	@Override

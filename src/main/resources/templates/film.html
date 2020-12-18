@@ -9,7 +9,7 @@
 <body>
 	<div class="centre-screen">
 		<h1>
-			Films By <span th:text="${director.directorName}">WHERE</span>
+			Films By <span th:text="${director.directorFullName}">WHERE</span>
 		</h1>
 		<table>
 			<tr>
@@ -20,7 +20,7 @@
 			<tr  th:object = "${film}">
 				<td th:text="*{filmId}">ID</td>
 				<td th:text="*{filmName}">FILM</td>
-				<td th:text="*{filmDirector:directorName}">DIRECTOR_NAME</td>`
+				<td th:text="*{filmDirector:directorFullName}">DIRECTOR_NAME</td>`
 			</tr>
 		</table>
 	<div>
